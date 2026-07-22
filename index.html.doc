@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ตลาดหนังสือมือสอง - สตูลวิทยา</title>
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --primary-hover: #004085;
+      --bg-color: #f4f6f9;
+      --accent-color: #28a745;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Sarabun', 'Tahoma', 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: #333;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0 0 8px 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    .search-bar {
+      margin-bottom: 25px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-bar input:focus {
+      border-color: var(--primary-color);
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .book-card {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .book-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .book-title {
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .book-tag {
+      display: inline-block;
+      background: #e9ecef;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      color: #495057;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .price {
+      color: #e63946;
+      font-size: 1.25em;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .price-discount {
+      text-decoration: line-through;
+      color: #adb5bd;
+      font-size: 0.65em;
+      margin-left: 4px;
+    }
+
+    .location {
+      font-size: 0.85em;
+      color: #6c757d;
+      margin: 6px 0 12px 0;
+    }
+
+    .btn-contact {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      transition: background-color 0.2s;
+    }
+
+    .btn-contact:hover { 
+      background-color: #218838; 
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📚 SW Book2Hand</h1>
+    <p>ตลาดส่งต่อหนังสือมือสอง โรงเรียนสตูลวิทยา</p>
+  </header>
+
+  <div class="container">
+    <div class="search-bar">
+      <input type="text" id="searchInput" onkeyup="filterBooks()" placeholder="ค้นหาชื่อหนังสือ, รายวิชา หรือระดับชั้น (เช่น ม.4, ฟิสิกส์)...">
+    </div>
+
+    <div class="book-grid" id="bookGrid">
+      <div class="book-card">
+        <div>
+          <span class="book-tag">ม.4 / วิทย์-คณิต</span>
+          <div class="book-title">คณิตศาสตร์เพิ่มเติม ม.4 เล่ม 1</div>
+          <p style="font-size:0.9em; color:#666; margin: 4px 0;">สภาพ 90% มีรอยจดด้วยดินสอนิดหน่อย</p>
+        </div>
+        <div>
+          <div class="price">฿60 <span class="price-discount">(ราคาเต็ม 120)</span></div>
+          <div class="location">📌 นัดรับ: โรงอาหาร ม.ปลาย</div>
+          <button class="btn-contact" onclick="alert('ติดต่อผู้ขายได้ที่ Line ID: @student_sw1')">ทักแชตซื้อหนังสือ</button>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div>
+          <span class="book-tag">ม.6 / เตรียมสอบ</span>
+          <div class="book-title">ตะลุยโจทย์ ฟิสิกส์ A-Level</div>
+          <p style="font-size:0.9em; color:#666; margin: 4px 0;">สภาพใหม่มาก ยังไม่ได้ทำสักหน้า</p>
+        </div>
+        <div>
+          <div class="price">฿120</div>
+          <div class="location">📌 นัดรับ: หน้าอาคาร 1</div>
+          <button class="btn-contact" onclick="alert('ติดต่อผู้ขายได้ที่ Line ID: @student_sw2')">ทักแชตซื้อหนังสือ</button>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div>
+          <span class="book-tag">ม.2</span>
+          <div class="book-title">คู่มือไวยากรณ์ ภาษาอังกฤษ ม.2</div>
+          <p style="font-size:0.9em; color:#666; margin: 4px 0;">ไฮไลท์ประมาณ 20% ของเล่ม</p>
+        </div>
+        <div>
+          <div class="price">฿40</div>
+          <div class="location">📌 นัดรับ: โดมอเนกประสงค์</div>
+          <button class="btn-contact" onclick="alert('ติดต่อผู้ขายได้ที่ Line ID: @student_sw3')">ทักแชตซื้อหนังสือ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function filterBooks() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.getElementsByClassName('book-card');
+
+      for (let i = 0; i < cards.length; i++) {
+        const text = cards[i].innerText.toLowerCase();
+        if (text.includes(input)) {
+          cards[i].style.display = "";
+        } else {
+          cards[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
